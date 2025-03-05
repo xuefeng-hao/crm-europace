@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String
+  role          String    @default("user")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  clients       Client[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Client {
+  id            String    @id @default(cuid())
+  name          String
+  email         String?
+  phone         String?
+  address       String?
+  status        String    @default("新建")
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  questionnaires Questionnaire[]
+  applications   Application[]
+}
+
+model Questionnaire {
+  id            String    @id @default(cuid())
+  title         String
+  description   String?
+  questions     String    @default("[]") // 存储问题数组，JSON 字符串
+  responses     String?   // 存储答案，JSON 字符串
+  status        String    @default("未完成")
+  clientId      String
+  client        Client    @relation(fields: [clientId], references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  application   Application?
+}
+
+model Application {
+  id              String    @id @default(cuid())
+  status          String    @default("处理中")
+  type            String    // 贷款类型
+  amount          Float     // 贷款金额
+  term            Int       // 贷款期限（月）
+  purpose         String?   // 贷款用途
+  documents       String?   @default("[]") // 存储文档列表，JSON 字符串
+  notes           String?   // 备注
+  clientId        String
+  client          Client    @relation(fields: [clientId], references: [id])
+  questionnaireId String?   @unique
+  questionnaire   Questionnaire? @relation(fields: [questionnaireId], references: [id])
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
