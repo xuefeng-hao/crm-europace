@@ -48,7 +48,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <span className="text-xl font-semibold">贷款顾问 CRM</span>
               <button
                 type="button"
-                className="-mr-2 p-2 text-gray-500 hover:text-gray-900"
+                className="-mr-2 p-2 text-black hover:text-black"
                 onClick={() => setSidebarOpen(false)}
               >
                 <XMarkIcon className="h-6 w-6" />
@@ -63,13 +63,13 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                     href={item.href}
                     className={`group flex items-center rounded-md px-2 py-2 text-sm font-medium ${
                       isActive
-                        ? 'bg-gray-100 text-gray-900'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        ? 'bg-gray-100 text-black'
+                        : 'text-black hover:bg-gray-50 hover:text-black'
                     }`}
                   >
                     <item.icon
                       className={`mr-3 h-6 w-6 flex-shrink-0 ${
-                        isActive ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500'
+                        isActive ? 'text-black' : 'text-black group-hover:text-black'
                       }`}
                     />
                     {item.name}
@@ -78,9 +78,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               })}
               <button
                 onClick={handleSignOut}
-                className="w-full group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                className="w-full group flex items-center rounded-md px-2 py-2 text-sm font-medium text-black hover:bg-gray-50 hover:text-black"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="mr-3 h-6 w-6 text-black group-hover:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
                 退出登录
@@ -105,13 +105,13 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                   href={item.href}
                   className={`group flex items-center rounded-md px-2 py-2 text-sm font-medium ${
                     isActive
-                      ? 'bg-gray-100 text-gray-900'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-gray-100 text-black'
+                      : 'text-black hover:bg-gray-50 hover:text-black'
                   }`}
                 >
                   <item.icon
                     className={`mr-3 h-6 w-6 flex-shrink-0 ${
-                      isActive ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500'
+                      isActive ? 'text-black' : 'text-black group-hover:text-black'
                     }`}
                   />
                   {item.name}
@@ -120,9 +120,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             })}
             <button
               onClick={handleSignOut}
-              className="w-full group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+              className="w-full group flex items-center rounded-md px-2 py-2 text-sm font-medium text-black hover:bg-gray-50 hover:text-black"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="mr-3 h-6 w-6 text-black group-hover:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
               退出登录
@@ -136,7 +136,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
           <button
             type="button"
-            className="px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 lg:hidden"
+            className="px-4 text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 lg:hidden"
             onClick={() => setSidebarOpen(true)}
           >
             <Bars3Icon className="h-6 w-6" />

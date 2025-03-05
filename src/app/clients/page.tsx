@@ -52,22 +52,22 @@ export default function ClientsPage() {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 姓名
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 邮箱
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 电话
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 状态
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                创建时间
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                创建日期
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 操作
               </th>
             </tr>
@@ -75,11 +75,11 @@ export default function ClientsPage() {
           <tbody className="bg-white divide-y divide-gray-200">
             {clients.map((client) => (
               <tr key={client.id}>
-                <td className="px-6 py-4 whitespace-nowrap">{client.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{client.email}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{client.phone}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{client.status}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-6 py-4 whitespace-nowrap text-black font-medium">{client.name}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-black font-medium">{client.email}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-black font-medium">{client.phone}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-black font-medium">{client.status}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-black font-medium">
                   {new Date(client.createdAt).toLocaleDateString()}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">

@@ -82,36 +82,37 @@ export default function QuestionnaireForm({ clientId, initialData }: Questionnai
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-          标题
+      <div className="mb-4">
+        <label htmlFor="title" className="block text-sm font-medium text-black">
+          问卷标题
         </label>
         <input
           type="text"
           id="title"
+          name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           required
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
         />
       </div>
-
-      <div>
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-          描述
+      <div className="mb-4">
+        <label htmlFor="description" className="block text-sm font-medium text-black">
+          问卷描述
         </label>
         <textarea
           id="description"
+          name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows={3}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
         />
       </div>
 
       <div className="space-y-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-lg font-medium text-gray-900">问题列表</h3>
+          <h3 className="text-lg font-medium text-black">问题列表</h3>
           <button
             type="button"
             onClick={addQuestion}
@@ -126,7 +127,7 @@ export default function QuestionnaireForm({ clientId, initialData }: Questionnai
             <div className="flex justify-between">
               <div className="flex-grow space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">问题标题</label>
+                  <label className="block text-sm font-medium text-black">问题标题</label>
                   <input
                     type="text"
                     value={question.title}
@@ -137,7 +138,7 @@ export default function QuestionnaireForm({ clientId, initialData }: Questionnai
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">问题类型</label>
+                  <label className="block text-sm font-medium text-black">问题类型</label>
                   <select
                     value={question.type}
                     onChange={(e) =>
@@ -153,7 +154,7 @@ export default function QuestionnaireForm({ clientId, initialData }: Questionnai
 
                 {(question.type === 'radio' || question.type === 'checkbox') && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">选项</label>
+                    <label className="block text-sm font-medium text-black">选项</label>
                     <textarea
                       value={question.options?.join('\n') || ''}
                       onChange={(e) =>
@@ -175,7 +176,7 @@ export default function QuestionnaireForm({ clientId, initialData }: Questionnai
                     onChange={(e) => updateQuestion(index, { required: e.target.checked })}
                     className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   />
-                  <label className="ml-2 block text-sm text-gray-900">必填</label>
+                  <label className="ml-2 block text-sm text-black">必填</label>
                 </div>
               </div>
 

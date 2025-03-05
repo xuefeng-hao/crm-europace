@@ -51,19 +51,19 @@ export default function ApplicationsPage() {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                客户姓名
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                客户
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                贷款金额
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                贷款类型
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                金额
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 状态
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                申请时间
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 操作
               </th>
             </tr>

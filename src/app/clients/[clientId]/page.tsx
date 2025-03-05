@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface Client {
   id: string;
@@ -51,7 +52,7 @@ export default function ClientDetailPage({
   if (error || !client) {
     return (
       <div className="text-center py-12">
-        <h3 className="text-lg font-medium text-gray-900 mb-4">
+        <h3 className="text-lg font-medium text-black mb-4">
           {error || '客户信息不存在'}
         </h3>
         <button
@@ -67,57 +68,64 @@ export default function ClientDetailPage({
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">客户详情</h1>
-        <button
-          onClick={() => router.back()}
-          className="text-blue-600 hover:text-blue-800"
-        >
-          返回列表
-        </button>
+        <h1 className="text-2xl font-semibold">{client.name}</h1>
+        <div className="flex space-x-2">
+          <Link
+            href={`/clients/${client.id}/edit`}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          >
+            编辑客户
+          </Link>
+          <Link
+            href={`/clients/${client.id}/questionnaires/new`}
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+          >
+            创建问卷
+          </Link>
+        </div>
       </div>
 
-      <div className="bg-white shadow rounded-lg">
-        <div className="px-4 py-5 sm:p-6">
-          <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-            <div className="sm:col-span-1">
-              <dt className="text-sm font-medium text-gray-500">姓名</dt>
-              <dd className="mt-1 text-sm text-gray-900">{client.name}</dd>
+      <div className="bg-white shadow rounded-lg overflow-hidden">
+        <div className="px-4 py-5 sm:px-6">
+          <h3 className="text-lg font-medium text-black">客户信息</h3>
+        </div>
+        <div className="border-t border-gray-200">
+          <dl>
+            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-black">姓名</dt>
+              <dd className="mt-1 text-sm text-black">{client.name}</dd>
             </div>
-
-            <div className="sm:col-span-1">
-              <dt className="text-sm font-medium text-gray-500">邮箱</dt>
-              <dd className="mt-1 text-sm text-gray-900">{client.email}</dd>
+            
+            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-black">邮箱</dt>
+              <dd className="mt-1 text-sm text-black">{client.email}</dd>
             </div>
-
-            <div className="sm:col-span-1">
-              <dt className="text-sm font-medium text-gray-500">电话</dt>
-              <dd className="mt-1 text-sm text-gray-900">{client.phone}</dd>
+            
+            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-black">电话</dt>
+              <dd className="mt-1 text-sm text-black">{client.phone}</dd>
             </div>
-
-            <div className="sm:col-span-1">
-              <dt className="text-sm font-medium text-gray-500">状态</dt>
-              <dd className="mt-1 text-sm text-gray-900">{client.status}</dd>
+            
+            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-black">状态</dt>
+              <dd className="mt-1 text-sm text-black">{client.status}</dd>
             </div>
-
-            {client.address && (
-              <div className="sm:col-span-2">
-                <dt className="text-sm font-medium text-gray-500">地址</dt>
-                <dd className="mt-1 text-sm text-gray-900">{client.address}</dd>
-              </div>
-            )}
-
-            {client.notes && (
-              <div className="sm:col-span-2">
-                <dt className="text-sm font-medium text-gray-500">备注</dt>
-                <dd className="mt-1 text-sm text-gray-900 whitespace-pre-wrap">
-                  {client.notes}
-                </dd>
-              </div>
-            )}
-
-            <div className="sm:col-span-2">
-              <dt className="text-sm font-medium text-gray-500">创建时间</dt>
-              <dd className="mt-1 text-sm text-gray-900">
+            
+            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-black">地址</dt>
+              <dd className="mt-1 text-sm text-black">{client.address}</dd>
+            </div>
+            
+            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-black">备注</dt>
+              <dd className="mt-1 text-sm text-black whitespace-pre-wrap">
+                {client.notes || '无'}
+              </dd>
+            </div>
+            
+            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-black">创建时间</dt>
+              <dd className="mt-1 text-sm text-black">
                 {new Date(client.createdAt).toLocaleString()}
               </dd>
             </div>

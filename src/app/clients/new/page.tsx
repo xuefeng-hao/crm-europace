@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function NewClientPage() {
   const router = useRouter();
@@ -91,10 +92,10 @@ export default function NewClientPage() {
 
       <form onSubmit={handleSubmit} className="bg-white shadow rounded-lg p-6">
         <div className="space-y-6">
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               姓名
             </label>
@@ -102,17 +103,17 @@ export default function NewClientPage() {
               type="text"
               id="name"
               name="name"
-              required
               value={formData.name}
               onChange={handleChange}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
             />
           </div>
 
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               邮箱
             </label>
@@ -120,17 +121,17 @@ export default function NewClientPage() {
               type="email"
               id="email"
               name="email"
-              required
               value={formData.email}
               onChange={handleChange}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
             />
           </div>
 
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               电话
             </label>
@@ -144,10 +145,31 @@ export default function NewClientPage() {
             />
           </div>
 
-          <div>
+          <div className="mb-4">
+            <label
+              htmlFor="status"
+              className="block text-sm font-medium text-black"
+            >
+              状态
+            </label>
+            <select
+              id="status"
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            >
+              <option value="潜在">潜在</option>
+              <option value="活跃">活跃</option>
+              <option value="已成交">已成交</option>
+              <option value="已流失">已流失</option>
+            </select>
+          </div>
+
+          <div className="mb-4">
             <label
               htmlFor="address"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               地址
             </label>
@@ -161,31 +183,10 @@ export default function NewClientPage() {
             />
           </div>
 
-          <div>
-            <label
-              htmlFor="status"
-              className="block text-sm font-medium text-gray-700"
-            >
-              状态
-            </label>
-            <select
-              id="status"
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            >
-              <option value="潜在">潜在</option>
-              <option value="活跃">活跃</option>
-              <option value="非活跃">非活跃</option>
-              <option value="已完成">已完成</option>
-            </select>
-          </div>
-
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="notes"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               备注
             </label>
@@ -199,14 +200,13 @@ export default function NewClientPage() {
             />
           </div>
 
-          <div className="flex justify-end space-x-3">
-            <button
-              type="button"
-              onClick={() => router.back()}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          <div className="flex justify-end mt-6">
+            <Link
+              href="/clients"
+              className="px-4 py-2 text-sm font-medium text-black bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               取消
-            </button>
+            </Link>
             <button
               type="submit"
               disabled={loading}

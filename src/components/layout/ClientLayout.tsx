@@ -28,40 +28,43 @@ export default function ClientLayout({
     <div className="min-h-screen bg-gray-100">
       <div className="flex h-screen bg-gray-100">
         {/* 侧边栏 */}
-        <div className="flex flex-col w-64 bg-white border-r">
-          <div className="flex items-center justify-center h-16 border-b">
-            <span className="text-xl font-semibold">贷款顾问 CRM</span>
-          </div>
-          <nav className="flex-1 overflow-y-auto">
-            <ul className="p-4 space-y-2">
-              {navigation.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={`flex items-center px-4 py-2 text-sm rounded-lg ${
-                        isActive
-                          ? 'bg-blue-100 text-blue-700'
-                          : 'text-gray-700 hover:bg-gray-100'
-                      }`}
-                    >
-                      <span className="mr-3">{item.icon}</span>
-                      {item.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-          <div className="p-4 border-t">
-            <button
-              onClick={() => signOut()}
-              className="flex items-center w-full px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-100"
-            >
-              <span className="mr-3">🚪</span>
-              退出登录
-            </button>
+        <div className="hidden md:flex md:flex-shrink-0">
+          <div className="flex flex-col w-64 bg-white border-r">
+            <div className="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto">
+              <div className="flex items-center flex-shrink-0 px-4">
+                <span className="text-xl font-semibold text-black">贷款顾问 CRM</span>
+              </div>
+              <div className="mt-5 flex-grow flex flex-col">
+                <nav className="flex-1 px-2 space-y-1">
+                  {navigation.map((item) => {
+                    const isActive = pathname.startsWith(item.href);
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className={`group flex items-center px-2 py-2 text-sm font-medium rounded-md ${
+                          isActive
+                            ? 'bg-blue-100 text-blue-700'
+                            : 'text-black hover:bg-gray-100'
+                        }`}
+                      >
+                        <span className="mr-3">{item.icon}</span>
+                        {item.name}
+                      </Link>
+                    );
+                  })}
+                </nav>
+              </div>
+              <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
+                <button
+                  onClick={() => signOut()}
+                  className="flex items-center w-full px-4 py-2 text-sm text-black rounded-lg hover:bg-gray-100"
+                >
+                  <span className="mr-3">🚪</span>
+                  退出登录
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 

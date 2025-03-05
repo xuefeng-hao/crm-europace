@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function NewUserPage() {
   const router = useRouter();
@@ -89,10 +90,10 @@ export default function NewUserPage() {
 
       <form onSubmit={handleSubmit} className="bg-white shadow rounded-lg p-6">
         <div className="space-y-6">
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               姓名
             </label>
@@ -100,17 +101,17 @@ export default function NewUserPage() {
               type="text"
               id="name"
               name="name"
-              required
               value={formData.name}
               onChange={handleChange}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
             />
           </div>
 
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               邮箱
             </label>
@@ -118,17 +119,17 @@ export default function NewUserPage() {
               type="email"
               id="email"
               name="email"
-              required
               value={formData.email}
               onChange={handleChange}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
             />
           </div>
 
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               密码
             </label>
@@ -136,17 +137,17 @@ export default function NewUserPage() {
               type="password"
               id="password"
               name="password"
-              required
               value={formData.password}
               onChange={handleChange}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
             />
           </div>
 
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="role"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               角色
             </label>
@@ -156,20 +157,21 @@ export default function NewUserPage() {
               value={formData.role}
               onChange={handleChange}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
             >
-              <option value="user">普通用户</option>
-              <option value="admin">管理员</option>
+              <option value="">选择角色</option>
+              <option value="ADMIN">管理员</option>
+              <option value="USER">普通用户</option>
             </select>
           </div>
 
           <div className="flex justify-end space-x-3">
-            <button
-              type="button"
-              onClick={() => router.back()}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            <Link
+              href="/users"
+              className="px-4 py-2 text-sm font-medium text-black bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               取消
-            </button>
+            </Link>
             <button
               type="submit"
               disabled={loading}

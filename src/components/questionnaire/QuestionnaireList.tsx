@@ -8,6 +8,7 @@ interface Questionnaire {
   description: string | null;
   status: string;
   createdAt: string;
+  responseCount?: number;
 }
 
 interface QuestionnaireListProps {
@@ -24,19 +25,22 @@ export default function QuestionnaireList({ clientId, questionnaires }: Question
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 标题
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 描述
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 状态
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                创建时间
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                回复数
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                创建日期
+              </th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-black uppercase tracking-wider">
                 操作
               </th>
             </tr>
@@ -52,12 +56,12 @@ export default function QuestionnaireList({ clientId, questionnaires }: Question
               questionnaires.map((questionnaire) => (
                 <tr key={questionnaire.id}>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-medium text-black">
                       {questionnaire.title}
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="text-sm text-gray-900">
+                    <div className="text-sm text-black">
                       {questionnaire.description || '-'}
                     </div>
                   </td>
@@ -72,8 +76,13 @@ export default function QuestionnaireList({ clientId, questionnaires }: Question
                       {questionnaire.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {new Date(questionnaire.createdAt).toLocaleString()}
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-black">
+                      {questionnaire.responseCount || 0}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
+                    {new Date(questionnaire.createdAt).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <button
